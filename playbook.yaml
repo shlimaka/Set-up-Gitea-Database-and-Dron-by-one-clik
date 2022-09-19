@@ -41,3 +41,9 @@
       dest: /etc/systemd/system/gitea.service
       mode: '0777'
       owner: git
+ 
+  - name: Run Gitea)
+    ansible.builtin.systemd:
+      name: gitea.service
+      enabled: true      
+      state: started 
