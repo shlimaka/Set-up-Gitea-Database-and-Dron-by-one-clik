@@ -1,0 +1,22 @@
+#lab_hosts:
+ # hosts:
+  #  gitea:  #gitea and nginx
+   #   ansible_host: lab1.epicfile.org
+    #drone:
+     # ansible_host: lab2.epicfile.org
+   # database_and_runner: #mysql and docker 
+    #  ansible_host: lab3.epicfile.org
+
+#aws:
+ # hosts:
+   # host1:
+  #    gg: ec2-3-91-187-124.compute-1.amazonaws.com 
+ #   test2:
+#      test22: 52.47.81.229	  
+ 
+aws:
+  hosts:
+    gitea:
+      ansible_host: ec2-3-91-187-124.compute-1.amazonaws.com
+    server_db:
+      ansible_host: 52.47.81.229
