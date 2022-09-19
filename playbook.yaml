@@ -3,7 +3,7 @@
 - name: Installing gitea
   hosts: server_db
   tasks:
-  
+    
 
   - name: Prepare environment    #Creating user git.
     ansible.builtin.user:
@@ -32,6 +32,12 @@
     ansible.builtin.get_url:
       url: https://dl.gitea.io/gitea/1.17.1/gitea-1.17.1-linux-amd64
       dest: /usr/local/bin/gitea     
+      mode: 0777
+      owner: git 
+ 
+  - name: Copy Gitea.service file to server 
+    ansible.builtin.copy: 
+      src: /gitea.service
+      dest: /etc/systemd/system/gitea.service
       mode: '0777'
       owner: git
- 
