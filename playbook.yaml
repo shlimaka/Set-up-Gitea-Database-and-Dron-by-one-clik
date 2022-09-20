@@ -7,6 +7,7 @@
 
   - name: Prepare environment    #Creating user git.
     ansible.builtin.user:
+   # remote_user: root
       name: git
       system: yes
       shell: /bin/bash
@@ -47,3 +48,29 @@
       name: gitea.service
       enabled: true      
       state: started 
+
+#  - name: Setup HTTPS by Nginx reverse proxy 
+  - name: Installing Nginx and cetbot  
+    apt: 
+      name: "{{ item }}"
+      state: latest
+    with_items:
+          - nginx
+         # - certbot
+         # - python-certbot-nginx
+
+  - name: Copy nginx configuration file
+    ansible.builtin.copy:
+      src: /nginx.conf
+      dest: /etc/nginx/nginx.conf
+      mode: '777'
+      owner: root
+
+#  - name: Get Let's Encrypt cert
+#    shell: "{{ item }}"
+#    with_items:
+#          - apt-get install certbot -y
+#          - apt-get install python3-certbot-nginx -y
+#          - nginx -t && nginx -s reload   
+#          - certbot --nginx -d example.com --non-interactive 
+   
