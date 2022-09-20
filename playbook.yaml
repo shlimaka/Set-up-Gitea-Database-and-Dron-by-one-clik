@@ -1,7 +1,7 @@
 ---
 
 - name: Installing gitea
-  hosts: server_db
+  hosts: gitea
   tasks:
     
 
