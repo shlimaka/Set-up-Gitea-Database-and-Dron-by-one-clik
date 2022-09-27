@@ -1,0 +1,42 @@
+---
+
+#- name: Installing Mysql server
+#  hosts: server_db
+#  tasks: 
+
+  - name: Downloading Mysql server
+    package:
+      name: "{{item}}"
+      state: present
+      update_cache: yes
+    loop:
+      - mysql-server
+      - mysql-client
+      - python3-mysqldb
+      - libmysqlclient-dev
+
+  - name: start and enable mysql service
+    service:
+      name: mysql
+      state: started
+      enabled: yes
+
+  - name: Copy mysql config file #to bind adress
+    template:
+      src: templates/mysqld.cnf
+      dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+ 
+  - name: Crating Databese
+    mysql_db:
+      name:  giteadb
+      state: present
+
+  - name: Create database user  with all database privileges
+    community.mysql.mysql_user:
+      name: gitea
+      host: 18.185.76.190
+   #   login_user: gitea
+#      login_unix_socket: /path/to/mysqld/socket
+      password: gitea
+      priv: '*.*:ALL'
+      state: present

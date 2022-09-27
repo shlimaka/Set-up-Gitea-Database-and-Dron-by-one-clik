@@ -2,75 +2,9 @@
 
 - name: Installing gitea
   hosts: gitea
+  remote_user: root
   tasks:
-    
+  roles:
+    - install_gitea
+#    - enable_HTTPS  hove to write domane name in /roles/enable_HTTPS/tasks/main.yaml
 
-  - name: Prepare environment    #Creating user git.
-    ansible.builtin.user:
-   # remote_user: root
-      name: git
-      system: yes
-      shell: /bin/bash
-      comment: Git Version Control System
-      password_lock: yes
-      createhome: yes
-      home: /home/git
-
-  - name: Create required directory structure
-    ansible.builtin.file:
-      path: "{{ item }}"
-      state: directory
-      mode: '770'
-      owner: git
-    with_items: 
-      - /var/lib/gitea
-      - /var/lib/gitea/custom
-      - /var/lib/gitea/data
-      - /var/lib/gitea/log
-      - /etc/gitea
-
-  - name: Downloading gitea binary
-    ansible.builtin.get_url:
-      url: https://dl.gitea.io/gitea/1.17.1/gitea-1.17.1-linux-amd64
-      dest: /usr/local/bin/gitea     
-      mode: 0777
-      owner: git 
- 
-  - name: Copy Gitea.service file to server 
-    ansible.builtin.copy: 
-      src: /gitea.service
-      dest: /etc/systemd/system/gitea.service
-      mode: '0777'
-      owner: git
- 
-  - name: Run Gitea)
-    ansible.builtin.systemd:
-      name: gitea.service
-      enabled: true      
-      state: started 
-
-#  - name: Setup HTTPS by Nginx reverse proxy 
-  - name: Installing Nginx and cetbot  
-    apt: 
-      name: "{{ item }}"
-      state: latest
-    with_items:
-          - nginx
-         # - certbot
-         # - python-certbot-nginx
-
-  - name: Copy nginx configuration file
-    ansible.builtin.copy:
-      src: /nginx.conf
-      dest: /etc/nginx/nginx.conf
-      mode: '777'
-      owner: root
-
-#  - name: Get Let's Encrypt cert
-#    shell: "{{ item }}"
-#    with_items:
-#          - apt-get install certbot -y
-#          - apt-get install python3-certbot-nginx -y
-#          - nginx -t && nginx -s reload   
-#          - certbot --nginx -d example.com --non-interactive 
-   

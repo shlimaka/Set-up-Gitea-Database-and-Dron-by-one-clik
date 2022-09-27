@@ -1,0 +1,49 @@
+---
+
+#- name: Installing gitea
+#  hosts: gitea
+#  tasks:
+
+
+  - name: Prepare environment    #Creating user git.
+    ansible.builtin.user:
+      name: git
+      system: yes
+      shell: /bin/bash
+      comment: Git Version Control System
+      password_lock: yes
+      createhome: yes
+      home: /home/git
+
+  - name: Create required directory structure
+    ansible.builtin.file:
+      path: "{{ item }}"
+      state: directory
+      mode: '770'
+      owner: git
+    with_items:
+      - /var/lib/gitea
+      - /var/lib/gitea/custom
+      - /var/lib/gitea/data
+      - /var/lib/gitea/log
+      - /etc/gitea
+
+  - name: Downloading gitea binary
+    ansible.builtin.get_url:
+      url: https://dl.gitea.io/gitea/1.17.1/gitea-1.17.1-linux-amd64
+      dest: /usr/local/bin/gitea
+      mode: 0777
+      owner: git
+
+  - name: Copy Gitea.service file to server
+    template:
+      src: templates/gitea.service
+      dest: /etc/systemd/system/gitea.service
+      mode: '0777'
+      owner: git
+
+  - name: Run Gitea)
+    ansible.builtin.systemd:
+      name: gitea.service
+      enabled: true
+      state: started
