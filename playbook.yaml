@@ -7,4 +7,9 @@
   roles:
     - install_gitea
 #    - enable_HTTPS  hove to write domane name in /roles/enable_HTTPS/tasks/main.yaml
-
+- name: install Mysql and create database and user for gitea
+  hosts: server_db
+  remote_user: root
+  tasks:
+  roles:
+    - install_mysqldb

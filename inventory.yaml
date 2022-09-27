@@ -17,6 +17,6 @@
 aws:
   hosts:
     gitea:
-      ansible_host: 35.174.6.12
+      ansible_host: 18.185.76.190
     server_db:
-      ansible_host: 52.47.81.229
+      ansible_host: 3.122.225.48 
