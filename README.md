@@ -26,4 +26,5 @@ In file roles/install_drone/defaults/main.yaml - you have to change this vars:
 4) DRONE_RPC_SECRET: 1234567890
 5) DRONE_SERVER_HOST: http://drone-example.com
 6) DRONE_SERVER_PROTO: http
+
 More about Drone environments you can read here - https://docs.drone.io/server/reference/
