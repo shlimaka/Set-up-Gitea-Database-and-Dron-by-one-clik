@@ -1,0 +1,16 @@
+--- 
+
+  - name: Copy docker-compose.yaml to server
+    template:
+      src: templates/docker-compose.yaml
+      dest: /root/docker-compose.yaml
+      mode: '0777'
+      owner: root
+
+
+
+  - name: Run `docker-compose up` again
+    community.docker.docker_compose:
+      project_src: /root/
+      build: false
+    register: output

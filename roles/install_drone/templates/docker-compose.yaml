@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:latest
+
+    ports:
+      - 880:80
+      - 8443:443
+    volumes:
+      - drone-server-data:/var/lib/drone/
+    restart: always
+    environment:
+      - DRONE_GITEA_SERVER={{ DRONE_GITEA_SERVER }}
+      - DRONE_GITEA_CLIENT_ID={{ DRONE_GITEA_CLIENT_ID }}
+      - DRONE_GITEA_CLIENT_SECRET={{ DRONE_GITEA_CLIENT_SECRET }}
+      - DRONE_RPC_SECRET={{ DRONE_RPC_SECRET }}
+      - DRONE_SERVER_HOST={{ DRONE_SERVER_HOST }}
+      - DRONE_SERVER_PROTO={{ DRONE_SERVER_PROTO }}
+  drone-agent:
+    image: drone/agent:latest
+
+    command: agent
+    restart: always
+    depends_on:
+      - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=drone-server:80
+      - DRONE_SECRET={{ DRONE_RPC_SECRET }}
+
+volumes:
+  drone-server-data:

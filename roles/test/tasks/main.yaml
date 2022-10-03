@@ -1,0 +1,7 @@
+---
+
+
+  
+  - name: Print a message
+    ansible.builtin.debug:
+      msg: 'Logging in as {{ name }}'    

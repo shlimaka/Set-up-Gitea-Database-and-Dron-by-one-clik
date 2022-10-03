@@ -1,9 +1,5 @@
 ---
 
-#- name: Installing Mysql server
-#  hosts: server_db
-#  tasks: 
-
   - name: Downloading Mysql server
     package:
       name: "{{item}}"
@@ -34,9 +30,7 @@
   - name: Create database user  with all database privileges
     community.mysql.mysql_user:
       name: gitea
-      host: 18.185.76.190
-   #   login_user: gitea
-#      login_unix_socket: /path/to/mysqld/socket
-      password: gitea
+      host: "{{ giteas_ip }}"
+      password: "{{ password_for_gitea_db_user }}"
       priv: '*.*:ALL'
       state: present
