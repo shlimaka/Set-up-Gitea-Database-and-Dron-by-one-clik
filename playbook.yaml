@@ -15,3 +15,11 @@
   tasks:
   roles:
     - install_mysqldb
+#    - install_runner
+
+- name: install_drone
+  hosts: drone
+  remote_user: root
+  roles:
+    - install_drone
+    - enable_HTTPS

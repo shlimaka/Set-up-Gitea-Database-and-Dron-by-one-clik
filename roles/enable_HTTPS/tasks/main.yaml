@@ -12,7 +12,7 @@
 
   - name: Remove default nginx file to free 80 port
     ansible.builtin.file:
-      path: /etc/nginx/sites-enabled/default
+      path: rm /etc/nginx/sites-enabled/default
       state: absent
 
   - name: Copy nginx configuration file
