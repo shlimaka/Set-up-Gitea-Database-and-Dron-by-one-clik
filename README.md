@@ -28,3 +28,8 @@ In file roles/install_drone/defaults/main.yaml - you have to change this vars:
 6) DRONE_SERVER_PROTO: http
 
 More about Drone environments you can read here - https://docs.drone.io/server/reference/
+
+Enable_HTTPS Variables:
+In fiel roles/enable_HTTPS/defaults/main.yaml - change this vars:
+
+1) domain: example_domain.com - change it to your giteas domain
