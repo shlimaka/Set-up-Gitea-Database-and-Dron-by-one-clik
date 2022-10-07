@@ -15,6 +15,7 @@ File /play_drone.yaml is an ansible playbook which:
 
 
 **Ansible dependency:**
+
 To make playbook works you have to install modules dependency on the your control node.
 1) MySQLdb (Python 2.x)
 2) PyMySQL (Python 2.7 and Python 3.x) or
