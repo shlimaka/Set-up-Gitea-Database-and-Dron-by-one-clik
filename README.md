@@ -1,7 +1,7 @@
 # Set-up-Gitea-Database-and-Dron-by-one-click
 Ansible playbook which installing Gitea, Database and Drone 
 
-*Discription*
+**Discription**
 
 File /play_gitea_mysql is an ansible playbook which:
 1) Installs Gitea 
