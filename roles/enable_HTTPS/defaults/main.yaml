@@ -1,1 +1,3 @@
-domain: lab1.epicfile.org 
+domain: example.com 
+porte: 1234      
+#gitea = 3000, drone 1080

@@ -19,7 +19,7 @@
     ansible.builtin.file:
       path: "{{ item }}"
       state: directory
-      mode: '770'
+      mode: '640'
       owner: git
     with_items:
       - /var/lib/gitea
@@ -32,14 +32,20 @@
     ansible.builtin.get_url:
       url: https://dl.gitea.io/gitea/1.17.1/gitea-1.17.1-linux-amd64
       dest: /usr/local/bin/gitea
-      mode: 0777
+      mode: '640'
       owner: git
+
+  - name: Verify GPG signature 
+    shell: "{{ item }}"
+    with_items:
+      - gpg --keyserver keys.openpgp.org --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
+      - gpg --verify /usr/local/bin/gitea
 
   - name: Copy Gitea.service file to server
     template:
       src: templates/gitea.service
       dest: /etc/systemd/system/gitea.service
-      mode: '0777'
+      mode: '640'
       owner: git
 
   - name: Run Gitea)

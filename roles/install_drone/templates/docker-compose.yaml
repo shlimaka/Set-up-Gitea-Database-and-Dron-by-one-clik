@@ -5,8 +5,7 @@ services:
     image: drone/drone:latest
 
     ports:
-      - 880:80
-      - 8443:443
+      - 127.0.0.1:1080:80
     volumes:
       - drone-server-data:/var/lib/drone/
     restart: always

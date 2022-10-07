@@ -1,0 +1,16 @@
+---
+
+- name: install_drone
+  hosts: drone
+  remote_user: root
+  roles:
+    - install_docker
+    - { role: enable_HTTPS, domain: drone.example.com, porte: 1080 }
+    - install_drone
+
+- name: Install drone ruuner on server_db
+  hosts: server_db
+  remote_user: root
+  roles:
+    - install_docker
+    - install_drone_runner

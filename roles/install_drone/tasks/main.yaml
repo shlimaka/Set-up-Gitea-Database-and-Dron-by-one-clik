@@ -4,13 +4,9 @@
     template:
       src: templates/docker-compose.yaml
       dest: /root/docker-compose.yaml
-      mode: '0777'
+      mode: '640'
       owner: root
 
+  - name: Run Drone
+    shell: docker compose -f /root/docker-compose.yaml up -d
 
-
-  - name: Run `docker-compose up` again
-    community.docker.docker_compose:
-      project_src: /root/
-      build: false
-    register: output

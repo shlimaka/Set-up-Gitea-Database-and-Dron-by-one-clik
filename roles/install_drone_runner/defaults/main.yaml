@@ -1,0 +1,4 @@
+DRONE_RPC_PROTO: https
+DRONE_RPC_HOST: drone.example.com
+DRONE_RPC_SECRET: 123456789
+DRONE_RUNNER_NAME: some name

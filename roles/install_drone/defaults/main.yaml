@@ -1,9 +1,9 @@
 
-DRONE_GITEA_SERVER: http://gitea-example.com
-DRONE_GITEA_CLIENT_ID: 1234567890
-DRONE_GITEA_CLIENT_SECRET: super-puper_secret
-DRONE_RPC_SECRET: 1234567890
-DRONE_SERVER_HOST: http://drone-example.com
-DRONE_SERVER_PROTO: http
+DRONE_GITEA_SERVER: https://gitea.example.com
+DRONE_GITEA_CLIENT_ID: 7f1b7e88-e95e-4659-b6af-73e176f0ae38
+DRONE_GITEA_CLIENT_SECRET: gto_m64vg2gpys4imnu52ldhep4glwzmsn4hlzfue6wicehkbwrohmdq
+DRONE_RPC_SECRET: c7b72017d299f34a1780301a508abeea
+DRONE_SERVER_HOST: https://drone.example.com
+DRONE_SERVER_PROTO: https
 
 

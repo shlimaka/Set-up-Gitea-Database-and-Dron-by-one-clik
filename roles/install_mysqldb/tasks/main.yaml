@@ -34,3 +34,8 @@
       password: "{{ password_for_gitea_db_user }}"
       priv: '*.*:ALL'
       state: present
+
+  - name: Reload Mysql
+    ansible.builtin.systemd:
+      name: mysql
+      state: reloaded

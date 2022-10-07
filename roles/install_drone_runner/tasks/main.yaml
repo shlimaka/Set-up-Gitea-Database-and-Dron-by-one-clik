@@ -1,0 +1,13 @@
+---
+
+  - name: Copy docker-compose.yaml to server
+    template:
+      src: templates/docker-compose.yml
+      dest: /root/docker-compose.yml
+      mode: '640'
+      owner: root
+
+
+
+  - name: Run Drone runner
+    shell: docker compose -f /root/docker-compose.yml up -d

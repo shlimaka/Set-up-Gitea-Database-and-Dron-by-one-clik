@@ -1,5 +1,4 @@
 ---
-#  - name: Setup HTTPS by Nginx reverse proxy
   - name: Installing Nginx and cetbot
     apt:
       update_cache: yes
@@ -19,7 +18,7 @@
     template:
       src: templates/nginx.conf
       dest: /etc/nginx/nginx.conf
-      mode: '777'
+      mode: '640'
       owner: root
 
   - name: Get Let's Encrypt cert
