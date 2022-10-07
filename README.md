@@ -11,7 +11,7 @@ File /play_gitea_mysql.yaml is an ansible playbook which:
 File /play_drone.yaml is an ansible playbook which:
 1) Installs and run Drone
 2) Enables HTTPS for Drone
-3) installs Drone Docker Runner 
+3) Installs Drone Docker Runner 
 
 
 **Ansible dependency:**
