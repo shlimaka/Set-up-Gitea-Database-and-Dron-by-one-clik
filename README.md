@@ -1,7 +1,8 @@
 # Set-up-Gitea-Database-and-Dron-by-one-click
 Ansible playbook which installing Gitea, Database and Drone 
 
-*Discription
+*Discription*
+
 File /play_gitea_mysql is an ansible playbook which:
 1) Installs Gitea 
 2) Enables HTTPS for Gitea
@@ -23,6 +24,7 @@ To make playbook works you have to install modules dependency on the your contro
 
 
 Environment preparation:
+
 In file /play_gitea_mysql.yaml change this vars:
 
 1) in role "enable_HTTPS" put your gites domain in var "domain" 
@@ -37,6 +39,7 @@ In file /play_drone.yaml change this vars:
 It needs to enable HTTPS for your Drone server
 
 Drone Variables:
+
 In file roles/install_drone/defaults/main.yaml - you have to change this vars:
 
 1) DRONE_GITEA_SERVER: http://gitea-example.com
@@ -48,6 +51,7 @@ In file roles/install_drone/defaults/main.yaml - you have to change this vars:
 More about Drone environments ou can read here - https://docs.drone.io/server/referen
 
 Drone Docker Runner Variables:
+
 In file roles/install_drone_runner/defaults/main.yaml change this vars:
 
 1) DRONE_RPC_PROTO: https
