@@ -3,7 +3,7 @@ Ansible playbook which installing Gitea, Database and Drone
 
 **Discription**
 
-File /play_gitea_mysql is an ansible playbook which:
+File /play_gitea_mysql.yaml is an ansible playbook which:
 1) Installs Gitea 
 2) Enables HTTPS for Gitea
 3) Installs and configurs Mysql server 
@@ -14,7 +14,7 @@ File /play_drone.yaml is an ansible playbook which:
 3) installs Drone Docker Runner 
 
 
-Ansible dependency:
+**Ansible dependency:**
 To make playbook works you have to install modules dependency on the your control node.
 1) MySQLdb (Python 2.x)
 2) PyMySQL (Python 2.7 and Python 3.x) or
@@ -23,7 +23,7 @@ To make playbook works you have to install modules dependency on the your contro
 5) mysqldump (command line binary)
 
 
-Environment preparation:
+**Environment preparation:**
 
 In file /play_gitea_mysql.yaml change this vars:
 
@@ -38,7 +38,7 @@ In file /play_drone.yaml change this vars:
 1) in role "enable_HTTPS" put your Drones domain in var "domain" 
 It needs to enable HTTPS for your Drone server
 
-Drone Variables:
+**Drone Variables:**
 
 In file roles/install_drone/defaults/main.yaml - you have to change this vars:
 
@@ -50,7 +50,7 @@ In file roles/install_drone/defaults/main.yaml - you have to change this vars:
 6) DRONE_SERVER_PROTO: http
 More about Drone environments ou can read here - https://docs.drone.io/server/referen
 
-Drone Docker Runner Variables:
+**Drone Docker Runner Variables:**
 
 In file roles/install_drone_runner/defaults/main.yaml change this vars:
 
@@ -59,6 +59,6 @@ In file roles/install_drone_runner/defaults/main.yaml change this vars:
 3) DRONE_RPC_SECRET: 123456789
 4) DRONE_RUNNER_NAME: some name
 
-Commands to run:
+**Commands to run:**
 1) ansible-playbook -i inventory.ymal play_gitea_mysql.yaml
 2) ansible-playbook -i inventory.ymal play_drone.yaml
