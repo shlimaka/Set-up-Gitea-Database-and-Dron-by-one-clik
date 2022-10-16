@@ -1,5 +1,5 @@
 # Set up Gitea Database and Dron by one click
-Ansible playbook which installing Gitea, Database and Drone 
+Ansible playbook which will installi Gitea, Database and Drone 
 
 **Discription**
 
