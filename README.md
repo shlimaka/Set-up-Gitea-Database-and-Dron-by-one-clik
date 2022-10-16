@@ -1,22 +1,22 @@
-# Set-up-Gitea-Database-and-Dron-by-one-click
+# Set up Gitea Database and Dron by one click
 Ansible playbook which installing Gitea, Database and Drone 
 
 **Discription**
 
-File /play_gitea_mysql.yaml is an ansible playbook which:
-1) Installs Gitea 
-2) Enables HTTPS for Gitea
-3) Installs and configurs Mysql server 
+File /play_gitea_mysql.yaml is an ansible playbook which will:
+1) Install Gitea 
+2) Enable HTTPS for Gitea
+3) Install and configurs Mysql server 
 
-File /play_drone.yaml is an ansible playbook which:
-1) Installs and run Drone
-2) Enables HTTPS for Drone
-3) Installs Drone Docker Runner 
+File /play_drone.yaml is an ansible playbook which will:
+1) Install and run Drone
+2) Enable HTTPS for Drone
+3) Install Drone Docker Runner 
 
 
 **Ansible dependency:**
 
-To make playbook works you have to install modules dependency on the your control node.
+To make playbook work you have to install modules dependency on the your control node.
 1) MySQLdb (Python 2.x)
 2) PyMySQL (Python 2.7 and Python 3.x) or
 3) mysql (command line binary)
