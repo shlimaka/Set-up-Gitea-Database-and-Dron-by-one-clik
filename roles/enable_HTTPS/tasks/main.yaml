@@ -1,0 +1,30 @@
+---
+  - name: Installing Nginx and cetbot
+    apt:
+      update_cache: yes
+      name: "{{ item }}"
+      state: latest
+    with_items:
+          - nginx
+          - certbot
+          - python3-certbot-nginx
+
+  - name: Remove default nginx file to free 80 port
+    ansible.builtin.file:
+      path: rm /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: Copy nginx configuration file
+    template:
+      src: templates/nginx.conf
+      dest: /etc/nginx/nginx.conf
+      mode: '640'
+      owner: root
+
+  - name: Get Let's Encrypt cert
+    shell: certbot --nginx -d {{ domain }} --non-interactive --agree-tos --email vasiliimihalevich@gmail.com
+
+  - name: Reload nginx
+    ansible.builtin.systemd:
+      name: nginx
+      state: reloaded

@@ -1,0 +1,15 @@
+---
+- name: demo
+  hosts: gitea
+  remote_user: root
+  tasks:
+  roles:
+    - install_gitea
+    - { role: enable_HTTPS, domain: gitea.example.com, porte: 3000 }
+
+- name: install db
+  hosts: server_db
+  remote_user: root
+  tasks:
+  roles:
+    - { role: install_mysqldb, giteas_ip: 123.456.7.8 } 
